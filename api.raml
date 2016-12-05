@@ -1,0 +1,16 @@
+#%RAML 0.8
+title: Example API
+version: v1
+baseUri: http://localhost:3000/{version}
+schemas:
+  - user:  schema/user.json
+
+/users:
+  get:
+   queryParameters:
+    name:
+      displayName: Name
+      type: string
+      description: An author's full name
+      example: Mary Roach
+      required: true
