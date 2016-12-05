@@ -1,28 +1,42 @@
-var express = require('express')
-var osprey = require('osprey')
-mongoose=require('mongoose')
-var join = require('path').join
+"use strict";
+
+var express = require("express");
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+
+var join = require("path").join;
 // connect to data
-mongoose.connect('mongodb://localhost:27017/start-kit');
-//
-var User= require('./models/user.js');  // import the User model
+mongoose.connect("mongodb://localhost:27017/start");
+//models
+var User = require("./models/user.js");  // import the User model
+//bodyParser
 
-var router = osprey.Router()
+var osprey = require("osprey");
 
-router.get('/users', function (req, res) {
-  User.find({},function(err,obj){
-  res.json(obj);
- })
-})
+var router = osprey.Router();
+router.use(bodyParser.json());
 
-osprey.loadFile(join(__dirname, 'api.raml'))
-  .then(function (middleware) {
-    var app = express()
+// get
+router.get("/users", function (req, res) {
+    User.find({}, function (err, obj) {
+        res.json(obj);
+    });
+});
 
-    app.use('/v1', middleware, router)
-    app.listen(3000, function () {
+// post
+router.post("/add", function (req, res) {
+    console.log(req.body.name);
+});
 
-    console.log("Hi ! the server is running on port ");
 
-    })
-  })
+osprey.loadFile(join(__dirname, "api.raml"))
+    .then(function (middleware) {
+        var app = express();
+
+        app.use("/v1", middleware, router);
+        app.listen(3000, function () {
+
+            console.log("Hi ! the server is running on port ");
+
+        });
+    });
