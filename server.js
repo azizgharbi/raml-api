@@ -15,7 +15,7 @@ var osprey = require("osprey");
 
 var router = osprey.Router();
 router.use(bodyParser.json());
-
+/*
 // get
 router.get("/users", function (req, res) {
     User.find({}, function (err, obj) {
@@ -27,16 +27,18 @@ router.get("/users", function (req, res) {
 router.post("/add", function (req, res) {
     console.log(req.body.name);
 });
+*/
 
-
-osprey.loadFile(join(__dirname, "api.raml"))
+osprey.loadFile(join(__dirname, "api.raml"), {
+  server: {
+        discardUnknownBodies: false
+    }
+})
     .then(function (middleware) {
         var app = express();
-
-        app.use("/v1", middleware, router);
         app.listen(3000, function () {
-
             console.log("Hi ! the server is running on port ");
-
         });
+        app.use("/v1", middleware, require('./routing/routes'));
+
     });

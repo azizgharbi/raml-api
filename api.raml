@@ -3,63 +3,11 @@ title: Example API
 version: v1
 baseUri: http://localhost:3000/{version}
 mediaType:  application/json
-
-/users:
-  get:
-   queryParameters:
-    name:
-      displayName: Name
-      type: string
-      description: full mame
-      example: aziz ha
-      required: true
+schemas:
+ - User: !include shemas/users.json
 
 /add:
-  displayName: Version
-  description: Parameters
-  post:
-    description: Returns 'O' if compatible and data are correct.
-    securedBy: [null]
-    body:
-      application/json:
-        schema: |
-          {
-            "type": "object",
-            "$schema": "http://json-schema.org/draft-03/schema",
-            "id": "parametres-schema",
-            "required": true,
-            "properties": {
-              "name": {
-                "description": "Session ID",
-                "type": "string",
-                "required": true
-              },
-              "email": {
-                "description": "File number",
-                "type": "string",
-                "required": true
-              }
-            }
-          }
-        example: |
-          {
-            "name": "ddd",
-            "email": "hddhdh"
-          }
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
-              {
-                "status": 200,
-                "success": true
-              }
-      400:
-        body:
-          application/json:
-            example: |
-              {
-                  "status": 403,
-                  "boutons": "0"
-              }
+   post:
+      body:
+        application/json:
+          schema: User
