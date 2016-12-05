@@ -1,11 +1,20 @@
 #%RAML 0.8
 title: Example API
 version: v1
-baseUri: http://localhost:3000/{version}
+baseUri: http://localhost:3500/{version}
 mediaType:  application/json
 schemas:
  - User: !include shemas/users.json
 
+/users:
+  get:
+    queryParameters:
+      name:
+       displayName: Author
+       type: string
+       description: user name
+       example: mario paolo
+       required: true
 /add:
    post:
       body:

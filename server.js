@@ -1,44 +1,26 @@
 "use strict";
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
 
+var express = require("express");
+var mongoose = require("mongoose");
+var osprey = require("osprey");
 var join = require("path").join;
+var app = express();
 // connect to data
 mongoose.connect("mongodb://localhost:27017/start");
-//models
-var User = require("./models/user.js");  // import the User model
-//bodyParser
 
-var osprey = require("osprey");
+//osprey load raml
+osprey.loadFile(join(__dirname,"api.raml"))
+.then(function (middleware) {
 
-var router = osprey.Router();
-router.use(bodyParser.json());
-/*
-// get
-router.get("/users", function (req, res) {
-    User.find({}, function (err, obj) {
-        res.json(obj);
-    });
-});
-
-// post
-router.post("/add", function (req, res) {
-    console.log(req.body.name);
-});
-*/
-
-osprey.loadFile(join(__dirname, "api.raml"), {
-  server: {
-        discardUnknownBodies: false
-    }
-})
-    .then(function (middleware) {
-        var app = express();
-        app.listen(3000, function () {
-            console.log("Hi ! the server is running on port ");
-        });
+     try {
         app.use("/v1", middleware, require('./routing/routes'));
+     } catch (error) {        
+         console.log(error);
+     };
 
+    //start server
+    app.listen(3500, function () {
+        console.log("Hi ! the server is running");
     });
+});
