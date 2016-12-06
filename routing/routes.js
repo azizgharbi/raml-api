@@ -6,14 +6,14 @@ var osprey = require("osprey");
 var router = osprey.Router();
 router.use(bodyParser.json());
 
-// get
+// get users
 router.get("/users", function (req, res) {
     User.find({}, function (err, obj) {
         res.json(obj);
     });
 });
 
-// post
+// post user
 router.post("/add", function (req, res) {
     console.log(req.body.name);
   res.status(200).json({

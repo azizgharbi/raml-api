@@ -8,7 +8,12 @@ var join = require("path").join;
 var app = express();
 // connect to data
 mongoose.connect("mongodb://localhost:27017/start");
-
+//static path
+app.use('/public', express.static('bower_components'));
+// get home statique page
+app.get('/',function(req,res){     
+     res.sendFile(__dirname + '/ressources/views/index.html');
+});
 //osprey load raml
 osprey.loadFile(join(__dirname,"api.raml"))
 .then(function (middleware) {
@@ -20,7 +25,7 @@ osprey.loadFile(join(__dirname,"api.raml"))
      };
 
     //start server
-    app.listen(3500, function () {
+    app.listen(3000, function () {
         console.log("Hi ! the server is running");
     });
 });
