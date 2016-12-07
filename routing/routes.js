@@ -15,10 +15,9 @@ router.get("/users", function (req, res) {
 
 // post user
 router.post("/add", function (req, res) {
-    console.log(req.body.name);
-  res.status(200).json({
-      "response": req.body 
-    });
+  var user = new User({name: req.body.name,email: req.body.email});
+  user.save();
+  res.status(200).json({"response": req.body });
 });
 
 module.exports = router;

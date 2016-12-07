@@ -1,0 +1,22 @@
+{
+  "name": "raml",
+  "description": "raml ospery exemple",
+  "main": "index.js",
+  "authors": [
+    "aziz"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/azizgharbi/raml-api",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "1.6.0-rc.2",
+    "angular-schema-form": "^0.8.13"
+  }
+}

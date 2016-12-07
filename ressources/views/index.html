@@ -1,28 +1,37 @@
 <html>
    <head>
-      <title>Express HTML</title>
+      <title>Page Exemple</title>
       <link rel="stylesheet" href="/public/bootstrap/dist/css/bootstrap.min.css">
    </head>
    <body ng-app="myApp">
       <div class="container">
          <div class="jumbotron">
-            <h1>Users Liste</h1>
+            <h3>Users Liste</h3>
             <div ng-controller="usersCtrl">
                <ul ng-repeat="user in users">
                   <li>Nom : {{user.name}} Email: {{user.email}} </li>
                </ul>
             </div>
          </div>
+         <div class="row">
+            <div class="col-sm-12" ng-controller="postController">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="alert alert-success" role="alert" ng-show="message">{{message}}</div>
+                  </div>
+               </div>
+               <form  sf-schema="schema"  sf-form="form" sf-model="user" ng-submit="submitForm()"></form>
+            </div>
+         </div>
       </div>
       <script src="/public/jquery/dist/jquery.min.js"></script>
       <script src="/public/bootstrap/dist/js/bootstrap.min.js"></script>
       <script src="/public/angular/angular.min.js"></script>
-      <script>
-         var app = angular.module('myApp', []);
-         app.controller('usersCtrl', function($scope, $http) {
-         $http.get("http://localhost:3000/v1/users")
-         .then(function (response) {$scope.users = response.data;});
-         });
-      </script>
+      <script type="text/javascript" src="/public/angular-sanitize/angular-sanitize.min.js"></script>
+      <script type="text/javascript" src="/public/tv4/tv4.js"></script>
+      <script type="text/javascript" src="/public/objectpath/lib/ObjectPath.js"></script>
+      <script type="text/javascript" src="/public/angular-schema-form/dist/schema-form.min.js"></script>
+      <script type="text/javascript" src="/public/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+      <script src="/web/js/app.js"></script>
    </body>
 </html>

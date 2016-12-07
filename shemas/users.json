@@ -5,12 +5,17 @@
 	"properties": {
 		"name": {
 			"type": "string",
+			"minLength": 4,
+			"title": "Name",
+			"description": "Enter your name please",
 			"required": true
 		},
 		"email": {
 			"type": "string",
+			"title": "Email",
+			"description": "Enter your email please",
+			"pattern": "^\\S+@\\S+$",
 			"required": true
-
 		}
 	}
 }

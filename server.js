@@ -10,6 +10,8 @@ var app = express();
 mongoose.connect("mongodb://localhost:27017/start");
 //static path
 app.use('/public', express.static('bower_components'));
+app.use('/web', express.static('web'));
+app.use('/schemas', express.static('shemas'));
 // get home statique page
 app.get('/',function(req,res){     
      res.sendFile(__dirname + '/ressources/views/index.html');
