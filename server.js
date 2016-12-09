@@ -16,6 +16,10 @@ app.use('/schemas', express.static('shemas'));
 app.get('/',function(req,res){     
      res.sendFile(__dirname + '/ressources/views/index.html');
 });
+//typescript
+app.get('/typescript',function(req,res){     
+     res.sendFile(__dirname + '/src/index.html');
+});
 //osprey load raml
 osprey.loadFile(join(__dirname,"api.raml"))
 .then(function (middleware) {
