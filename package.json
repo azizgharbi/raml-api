@@ -19,6 +19,7 @@
     "grunt-ts": "^6.0.0-beta.3",
     "grunt-tslint": "^3.3.0",
     "mongoose": "^4.7.1",
+    "nodemon": "^1.11.0",
     "osprey": "^0.3.2",
     "path": "^0.12.7",
     "tslint": "^4.0.2",

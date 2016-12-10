@@ -13,12 +13,12 @@ var User;
             var self = this;
             self.$http.get("http://localhost:3000/v1/users")
                 .success(function (response) {
-                self.$scope.users = response["data"];
+                self.$scope.users = response;
             });
         };
-        usersCtrl.$inject = ["$scope", "$http"];
         return usersCtrl;
     }());
+    usersCtrl.$inject = ["$scope", "$http"];
     User.usersCtrl = usersCtrl;
     app.controller("usersCtrl", User.usersCtrl);
 })(User || (User = {}));

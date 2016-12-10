@@ -8,7 +8,7 @@ module User
 
     export interface Iuser  extends ng.IScope
     {
-        users: any;
+        users: Object;
     }
 
     export class usersCtrl
@@ -23,7 +23,7 @@ module User
             let self = this;
             self.$http.get("http://localhost:3000/v1/users")
                 .success(function(response) {
-                    self.$scope.users = response["data"];
+                    self.$scope.users = response;
                 });
         }
     }
