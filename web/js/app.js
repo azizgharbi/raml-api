@@ -47,8 +47,7 @@ app.controller('postController', function($scope, $http) {
                 if (data.errors) {
                     console.log("error");
                 } else {
-                    $scope.user.name = "";
-                    $scope.user.email = "";
+                   $('input[type="submit"]').prop('disabled', true);
                     $scope.message = "Success operation";
                 }
             });

@@ -8,9 +8,29 @@
          <div class="jumbotron">
             <h3>Users Liste</h3>
             <div ng-controller="usersIndex">
-             <ul ng-repeat="user in users">
+               <ul ng-repeat="user in users">
                   <li> Nom : {{user.name}} Email: {{user.email}} </li>
-             </ul> 
+               </ul>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-sm-12" ng-controller="usersCreate">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="alert alert-success" role="alert" ng-show="message">{{message}}</div>
+                  </div>
+               </div>
+               <form ng-submit="us.Create()" method="POST"|>
+                  <div class="form-group">
+                     <label for="usr">Name:</label>
+                     <input type="text" class="form-control" id="usr" ng-model="us.name">
+                  </div>
+                  <div class="form-group">
+                     <label for="eml">Email</label>
+                     <input type="text" class="form-control" id="eml" ng-model="us.email">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Send</button>
+               </form>
             </div>
          </div>
       </div>
