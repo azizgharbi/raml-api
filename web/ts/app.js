@@ -7,18 +7,19 @@ var User;
         function usersCtrl($scope, $http) {
             this.$scope = $scope;
             this.$http = $http;
-            this.Fetech();
+            this.Fetech(); // call function
         }
+        // get users 
         usersCtrl.prototype.Fetech = function () {
             var self = this;
             self.$http.get("http://localhost:3000/v1/users")
                 .success(function (response) {
-                self.$scope.users = response["data"];
+                self.$scope.users = response;
             });
         };
         usersCtrl.$inject = ["$scope", "$http"];
         return usersCtrl;
     }());
     User.usersCtrl = usersCtrl;
-    app.controller("usersCtrl", User.usersCtrl);
+    app.controller("usersIndex", User.usersCtrl);
 })(User || (User = {}));
