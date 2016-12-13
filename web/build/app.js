@@ -1,4 +1,3 @@
-/// <reference path="../_references.ts" />
 var User;
 (function (User) {
     "use strict";
@@ -7,10 +6,9 @@ var User;
         function usersCtrl($scope, $http) {
             this.$scope = $scope;
             this.$http = $http;
-            this.Fetech(); // call function
+            this.Fetech();
             $scope.us = this;
         }
-        // get users 
         usersCtrl.prototype.Fetech = function () {
             var self = this;
             self.$http.get("http://localhost:3000/v1/users")
@@ -28,7 +26,8 @@ var User;
                 headers: { 'Content-Type': 'application/json' }
             })
                 .success(function (data) {
-                console.log(data);
+                console.log("wow");
+                self.Fetech();
             });
         };
         usersCtrl.$inject = ["$scope", "$http"];

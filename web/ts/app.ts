@@ -6,7 +6,6 @@ module User {
 
     export interface Iuser extends ng.IScope {
         users: Object;
-        user: Object;
         email:String;
         name:string;
         us:any;
@@ -32,7 +31,9 @@ module User {
 
 
          public Create(data:Object):void { 
-           data={'name':this["name"],'email':this["email"]};
+
+        data={'name':this["name"],'email':this["email"]};
+
           let self = this;
            self.$http({
                 method: 'POST',
@@ -41,7 +42,8 @@ module User {
                 headers: { 'Content-Type': 'application/json' }
             })
             .success(function(data) {
-             console.log(data);
+             console.log("wow");
+             self.Fetech(); 
             }); 
         }         
     }

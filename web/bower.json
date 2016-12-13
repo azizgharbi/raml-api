@@ -1,8 +1,18 @@
 {
+<<<<<<< HEAD
   "name": "web",
   "homepage": "https://github.com/azizgharbi/raml-api",
   "description": "",
   "main": "",
+=======
+  "name": "typescript-exemple",
+  "homepage": "https://github.com/azizgharbi/raml-api",
+  "description": "juste an exemple with angulars1.4.9",
+  "main": "",
+  "authors": [
+    "aziz gharbi"
+  ],
+>>>>>>> 0d65c5d508722da27a9a36db81f0b577e85c6416
   "license": "MIT",
   "ignore": [
     "**/.*",

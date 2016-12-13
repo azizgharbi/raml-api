@@ -1,9 +1,14 @@
 {
     "compilerOptions": {
           "target": "es5",
-          "pretty": true
+          "pretty": true,
+          "removeComments": true,
+          "outFile": "./build/app.js"
     },
     "files": [
         "ts/app.ts"
+    ],
+    "exclude": [
+        "_references.ts"
     ]
 }
