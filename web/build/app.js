@@ -13,7 +13,7 @@ var User;
             var self = this;
             self.$http.get("http://localhost:3000/v1/users")
                 .success(function (response) {
-                self.$scope.users = response;
+                self.$scope.us.users = response;
             });
         };
         usersCtrl.prototype.Create = function (data) {
@@ -27,7 +27,7 @@ var User;
             })
                 .success(function (data) {
                 console.log("wow");
-                self.Fetech();
+                self.$scope.us.users.push(data);
             });
         };
         usersCtrl.$inject = ["$scope", "$http"];

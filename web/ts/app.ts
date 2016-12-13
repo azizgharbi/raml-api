@@ -5,9 +5,6 @@ module User {
     var app = angular.module('myApp', []);
 
     export interface Iuser extends ng.IScope {
-        users: Object;
-        email:String;
-        name:string;
         us:any;
     }
 
@@ -25,7 +22,7 @@ module User {
             let self = this;
             self.$http.get("http://localhost:3000/v1/users")
                 .success(function(response) {
-                    self.$scope.users = response;
+                    self.$scope.us.users = response;
                 });
         }
 
@@ -43,11 +40,13 @@ module User {
             })
             .success(function(data) {
              console.log("wow");
-             self.Fetech(); 
+              self.$scope.us.users.push(data);
             }); 
-        }         
-    }
+        }       
 
+                    
+  
+    }
 
     app.controller("usersIndex", User.usersCtrl);
     app.controller("usersCreate", User.usersCtrl);
