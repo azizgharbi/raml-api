@@ -26,7 +26,7 @@ var User;
                 headers: { 'Content-Type': 'application/json' }
             })
                 .success(function (data) {
-                console.log("wow");
+                console.log(data);
                 self.$scope.us.users.push(data);
             });
         };
