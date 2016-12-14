@@ -32,41 +32,35 @@ module.exports = function(grunt) {
                 }
             }
         },
-        
+
+        typescript: {
+            base: {
+                src: ["web/ts/*.ts"],
+                dest: 'web/build/app.js',
+                options: {
+                    module: 'amd',
+                    target: 'es5'
+                }
+            }
+        },
+
         watch: {
             configs: {
                 files: ["web/ts/*.ts"],
                 tasks: ["typescript"],
                 options: {
-                    spawn: false
+                    spawn: false,
+                    livereload: true
                 }
             }
         },
 
-        parallel: {
-            client: {
-                options: {
-                    stream: true
-                },
-                tasks: [{
-                    grunt: true,
-                    args: ["watch:configs", "typescript:base"]
-                }]
-            }
-        },
-
-        ts: {
-            default: {
-                tsconfig: true
-            }
-        }
 
 
 
     });
 
 
-    grunt.registerTask('default', ['concat', 'uglify', 'watch', 'ts']);
-    grunt.registerTask('typescript', ['watch', 'ts']);
+    grunt.registerTask('default', ['concat', 'uglify', 'watch']);
 
 };
