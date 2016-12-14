@@ -32,15 +32,26 @@ module.exports = function(grunt) {
                 }
             }
         },
+        
         watch: {
             configs: {
                 files: ["web/ts/*.ts"],
-                tasks: ["default"],
+                tasks: ["typescript"],
                 options: {
-                    reload: true,
-                    spawn: false,
-                    debounceDelay: 25
+                    spawn: false
                 }
+            }
+        },
+
+        parallel: {
+            client: {
+                options: {
+                    stream: true
+                },
+                tasks: [{
+                    grunt: true,
+                    args: ["watch:configs", "typescript:base"]
+                }]
             }
         },
 
@@ -56,5 +67,6 @@ module.exports = function(grunt) {
 
 
     grunt.registerTask('default', ['concat', 'uglify', 'watch', 'ts']);
+    grunt.registerTask('typescript', ['watch', 'ts']);
 
 };
