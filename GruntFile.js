@@ -24,7 +24,18 @@ grunt.initConfig({
         'web/build/all.min.js': ['web/build/all.js']
       }
     }
-  }
+  },
+   watch: {
+            configs: {
+                files: ["Gruntfile.js", "web/ts/*.ts"],
+                tasks: ["default"],
+                options: {
+                    reload: true,
+                    spawn: false,
+                    debounceDelay: 25
+                }
+            }
+        }
   
   
 
@@ -33,8 +44,9 @@ grunt.initConfig({
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   //grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.registerTask('default',['concat','uglify']);
+  grunt.registerTask('default',['concat','uglify','watch']);
 
 
 };
