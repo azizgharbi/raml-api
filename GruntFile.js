@@ -1,48 +1,41 @@
+
 module.exports = function(grunt) {
-    "use strict";
 
-    // Load grunt tasks automatically
-    require("load-grunt-tasks")(grunt);
-    // var path = require("path");
-
-    // Project configuration.
-    grunt.initConfig({
-
-        pkg: grunt.file.readJSON("package.json"),
-
-        watch: {
-            configs: {
-                files: ["Gruntfile.js", "web/ts/*.ts"],
-                tasks: ["typescript"],
-                options: {
-                    reload: true,
-                    spawn: false,
-                    debounceDelay: 25
-                }
-            }
-        },
-
-        typescript: {
-            base: {
-                src: ['web/ts/*.ts'],
-                dest: 'web/build/app.js',
-                options: {
-                    module: 'amd', //or commonjs 
-                    target: 'es5', //or es3 
-                    basePath: 'web/ts',
-                    sourceMap: true,
-                    declaration: true
-                }
-            }
-        }
+grunt.initConfig({
+  
+ /*jshint: {
+    all: ['bower_components/jquery/dist/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js', 'web/bower_components/angular/angular.js','web/build/app.js']
+  }, */
 
 
-    });
+  concat: {
+    options: {
+      separator: ';',
+    },
+    dist: {
+      src: ['bower_components/jquery/dist/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js','web/bower_components/angular/angular.js'],
+      dest: 'web/build/all.js',
+    },
+  },
 
-    grunt.registerTask("default", function(target) {
-        grunt.task.run(["typescript", "watch"]);
-    });
+   uglify: {
+    dist: {
+      files: {
+        'web/build/all.min.js': ['web/build/all.js']
+      }
+    }
+  }
+  
+  
 
-    grunt.loadNpmTasks("grunt-ts");
-    grunt.registerTask("typescript", ["typescript"]);
+});
+
+
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  //grunt.loadNpmTasks('grunt-contrib-jshint');
+
+  grunt.registerTask('default',['concat','uglify']);
+
+
 };

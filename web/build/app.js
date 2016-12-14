@@ -26,8 +26,16 @@ var User;
                 headers: { 'Content-Type': 'application/json' }
             })
                 .success(function (data) {
-                console.log(data);
-                self.$scope.us.users.push(data);
+                self.$scope.us.users.push(data["response"]);
+            });
+        };
+        usersCtrl.prototype.Refresh = function () {
+            var self = this;
+            self.$http.get("http://localhost:3000/v1/users")
+                .success(function (response) {
+                self.$scope.$apply(function () {
+                    self.$scope.us.users = response;
+                });
             });
         };
         usersCtrl.$inject = ["$scope", "$http"];
