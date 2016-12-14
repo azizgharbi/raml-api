@@ -19,6 +19,7 @@
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-ts": "^6.0.0-beta.3",
     "mongoose": "^4.7.1",
     "nodemon": "^1.11.0",
     "osprey": "^0.3.2",

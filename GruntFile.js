@@ -19,9 +19,14 @@ grunt.initConfig({
   },
 
    uglify: {
+       options:{
+        mangle:false
+       },
     dist: {
       files: {
-        'web/build/all.min.js': ['web/build/all.js']
+        'web/build/all.min.js': ['web/build/all.js'],
+        'web/build/app.min.js': ['web/build/app.js'],
+
       }
     }
   },
@@ -35,6 +40,12 @@ grunt.initConfig({
                     debounceDelay: 25
                 }
             }
+        },
+
+         ts: {
+            default: {
+                tsconfig: true     
+            }
         }
   
   
@@ -45,8 +56,8 @@ grunt.initConfig({
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks("grunt-ts");
   //grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.registerTask('default',['concat','uglify','watch']);
-
+  grunt.registerTask('default',['concat','uglify','watch','ts']);
 
 };

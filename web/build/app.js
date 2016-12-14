@@ -33,9 +33,7 @@ var User;
             var self = this;
             self.$http.get("http://localhost:3000/v1/users")
                 .success(function (response) {
-                self.$scope.$apply(function () {
-                    self.$scope.us.users = response;
-                });
+                self.$scope.us.users = response;
             });
         };
         usersCtrl.$inject = ["$scope", "$http"];
