@@ -4,12 +4,21 @@
       <link rel="stylesheet" href="/public/bootstrap/dist/css/bootstrap.min.css">
    </head>
    <body>
+       <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Angulars js </a></li>
+      <li><a href="/typescript">Angulars js + Typescript</a></li>
+    </ul>
+  </div>
+</nav>
       <div class="container">
          <div class="jumbotron">
-            <h3>Users Liste</h3>
+            <h3>Users Liste typescript</h3>
             <div ng-controller="usersIndex">
-               <ul ng-repeat="user in us.users">
+               <ul ng-repeat="user in users">
                   <li> Nom : {{user.name}} Email: {{user.email}} </li>
+                  <div id="addus">
                </ul>
             </div>
          </div>
@@ -24,7 +33,7 @@
                      <label for="eml">Email</label>
                      <input type="text" class="form-control" id="eml" ng-model="us.email">
                   </div>
-                  <button  class="btn btn-primary" ng-click="us.Refresh()">Send</button>
+                  <button  class="btn btn-primary">Send</button>
                </form>
             </div>
          </div>

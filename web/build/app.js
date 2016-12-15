@@ -27,9 +27,10 @@ var User;
             var self = this;
             self.$http.get("http://localhost:3000/v1/users")
                 .success(function (response) {
-                self.$scope.us.users = response;
+                self.$scope.users = response;
             });
         };
+        //create user 
         usersCtrl.prototype.Create = function (data) {
             data = { 'name': this["name"], 'email': this["email"] };
             var self = this;
@@ -40,17 +41,13 @@ var User;
                 headers: { 'Content-Type': 'application/json' }
             })
                 .success(function (data) {
-                self.$scope.us.users.push(data["response"]);
+                self.$scope.users.push(data["response"]);
+                console.log(self.$scope.users);
+                /*
+                var myEl = angular.element( document.querySelector( '#addus' ) );
+                myEl.append("<br><li> Nom :"+data["response"]["name"]+" Email:" +data["response"]["email"]+"</li>");
+                */
             });
-        };
-        // Refresh      
-        usersCtrl.prototype.Refresh = function () {
-            var self = this;
-            self.$http.get("http://localhost:3000/v1/users")
-                .success(function (response) {
-                self.$scope.us.users = response;
-            });
-            //console.log(this.$scope.us.users);
         };
         usersCtrl.$inject = ["$scope", "$http"];
         return usersCtrl;

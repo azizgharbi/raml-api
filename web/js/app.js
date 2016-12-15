@@ -1,4 +1,6 @@
 var app = angular.module('myApp', ['schemaForm']);
+
+
 // fetech data
 app.controller('usersCtrl', function($scope, $http) {
     $http.get("http://localhost:3000/v1/users")
@@ -6,6 +8,8 @@ app.controller('usersCtrl', function($scope, $http) {
             $scope.users = response.data;
         });
 });
+
+
 // post data
 app.controller('postController', function($scope, $http) {
     $scope.schema = {
@@ -53,3 +57,4 @@ app.controller('postController', function($scope, $http) {
             });
     };
 });
+
