@@ -22,13 +22,14 @@ router.get("/users", function (req, res) {
 router.post("/add", function (req, res) {
 
 var user = new User({name: req.body.name,email: req.body.email});
-/*var schema = {
+var schema = {
   "properties": {
     "name": { "type": "string"},
     "email": { "type": "string", "pattern": "^\\S+@\\S+$"}
   }
-};*/
-let schema = require("../shemas/users");
+};
+//let schema = require("../shemas/users");
+//ajv.addSchema(require('../shemas/users', 'users'));
 let valid = ajv.validate(schema, user);
 
 if (!valid) {console.log(ajv.errorsText());}

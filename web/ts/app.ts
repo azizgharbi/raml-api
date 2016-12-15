@@ -43,10 +43,8 @@ module User {
             .success(function(data) {
                self.$scope.users.push(data["response"]);
                console.log(self.$scope.users);  
-             /*
-             var myEl = angular.element( document.querySelector( '#addus' ) );
-             myEl.append("<br><li> Nom :"+data["response"]["name"]+" Email:" +data["response"]["email"]+"</li>");   
-             */  
+             /*var myEl = angular.element( document.querySelector( '.addus' ) );
+             myEl.append("<br><li> Nom :"+data["response"]["name"]+" Email:" +data["response"]["email"]+"</li>");   */
 
             }); 
         } 

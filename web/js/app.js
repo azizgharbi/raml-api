@@ -52,7 +52,6 @@ app.controller('postController', function($scope, $http) {
                     console.log("error");
                 } else {
                    $('input[type="submit"]').prop('disabled', true);
-                    $scope.message = "Success operation";
                 }
             });
     };
